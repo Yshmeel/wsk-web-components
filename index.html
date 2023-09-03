@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Components</title>
+    <link rel="stylesheet" href="./css/main.css">
+
+    <script src="./js/button.js"></script>
+    <script src="./js/input.js"></script>
+    <script src="./js/card.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Web Components</h1>
+    </header>
+
+    <main>
+        <section class="buttons">
+            <h2>Buttons</h2>
+
+            <div class="button__rows">
+                <button is="my-button" data-type="default" data-size="lg">Click me!</button>
+                <button is="my-button" data-type="default" data-size="md">Click me!</button>
+                <button is="my-button" data-type="default" data-size="sm">Click me!</button>
+            </div>
+
+            <div class="button__rows">
+                <button is="my-button" data-type="danger" data-size="lg">Click me!</button>
+                <button is="my-button" data-type="danger" data-size="md">Click me!</button>
+                <button is="my-button" data-type="danger" data-size="sm">Click me!</button>
+            </div>
+
+            <div class="button__rows">
+                <button is="my-button" data-type="warning" data-size="lg">Click me!</button>
+                <button is="my-button" data-type="warning" data-size="md">Click me!</button>
+                <button is="my-button" data-type="warning" data-size="sm">Click me!</button>
+            </div>
+        </section>
+
+        <section class="inputs">
+            <h2>Form</h2>
+
+            <form>
+                <my-input required="true" label="First name"></my-input>
+                <my-input required="true" label="Last name"></my-input>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Cards</h2>
+
+            <div class="card__rows">
+                <m-card>
+                    <slot name="title">Card title</slot>
+                    <slot name="description">Card description</slot>
+                </m-card>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

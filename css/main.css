@@ -1,0 +1,44 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* buttons */
+.btn {
+    background: #2196F3;
+    padding: 20px 45px;
+    border: none;
+    color: #fff;
+    font-size: 21px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.btn:hover {
+    opacity: .3;
+}
+
+.btn-size-lg {
+    padding: 15px 35px;
+}
+
+.btn-size-md {
+    padding: 10px 25px;
+    font-size: 15px;
+}
+
+.btn-size-sm {
+    padding: 5px 15px;
+    font-size: 13px;
+}
+
+.btn-danger {
+    background: #a40909;
+}
+
+.btn-warning {
+    background: #fcbc4b;
+}
+
+.button__rows {
+    margin-bottom: 10px;
+}
