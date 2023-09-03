@@ -71,6 +71,9 @@ paths:
           required: true
           schema:
             type: integer
+
+      security:
+        - BearerAuth: []
       requestBody:
         required: true
         content:
@@ -107,6 +110,12 @@ paths:
                         example: Post is not found
 
 components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
   schemas:
     Error-Not-Found:
       type: object
