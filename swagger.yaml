@@ -1,0 +1,157 @@
+openapi: 3.0.0
+
+info:
+  title: EuroSkills 2023 API
+  description: Test
+  version: 1.0.0
+
+paths:
+  /v1/users/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Get user by ID
+          schema:
+            type: integer
+
+        - name: id2
+          in: query
+          required: true
+          description: Get user by ID 2
+          schema:
+            type: integer
+
+      responses:
+        '401':
+          description: User is not authorized
+          content:
+             application/json:
+               schema:
+                 $ref: '#/components/schemas/User'
+  /v1/user:
+    post:
+      summary: Create user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                display_name:
+                  type: string
+                  description: Display name of user
+
+      responses:
+        '200':
+          description: User is successfully created
+          content:
+            application/json:
+              schema:
+                # or $ref
+                properties:
+                  id:
+                    type: integer
+                  display_name:
+                    type: string
+                required:
+                  - id
+                  - display_name
+
+
+  /v1/post/{id}:
+    patch:
+      summary: Patch post
+
+      parameters:
+        - name: id
+          in: path
+          description: ID of the post
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                title:
+                  type: string
+
+              required:
+                - title
+      responses:
+        '200':
+          description: Request successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Post"
+
+        '404':
+          description: Post is not found
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Error-Not-Found'
+                  - properties:
+                      code:
+                        type: string
+                        example: 1000
+
+                      message:
+                        type: string
+                        example: Post is not found
+
+components:
+  schemas:
+    Error-Not-Found:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+      required:
+        - code
+        - message
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: User ID
+          example: 1
+
+        display_name:
+          type: string
+          description: User's display name
+          example: Yshmeel
+      required:
+        - id
+        - display_name
+
+    Post:
+      type: integer
+
+      properties:
+        id:
+          type: integer
+          example: 1
+
+        title:
+          type: string
+          example: Test post
+
+        created_at:
+          type: string
+          format: date-time
+          example: 2022-01-10
+
+      required:
+        - id
+        - title

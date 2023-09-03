@@ -7,7 +7,6 @@ class InputEl extends HTMLElement {
         super();
 
         this._internals = this.attachInternals();
-        console.log(this._internals);
     }
 
     connectedCallback() {
